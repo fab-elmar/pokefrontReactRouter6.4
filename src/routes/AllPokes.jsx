@@ -13,6 +13,17 @@ export async function Allloader() {
 export const AllPokes = () => {
     const { pokes } = useLoaderData();
     console.log(pokes)
+
+
+    const searchTerm = 'Venusaur'
+    console.log(pokes.filter((poke) => {
+        return poke.name.english.toLowerCase().trim().includes(searchTerm)
+
+    }));
+
+
+
+
     return (<>
         <div>AllPokes</div>
         <ol>
