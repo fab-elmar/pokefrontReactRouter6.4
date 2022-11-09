@@ -11,6 +11,7 @@ import './index.css'
 import ErrorPage from './components/error-page';
 import Root from './routes/Root';
 import Hero from './routes/Hero'
+import Battle from './routes/Battle';
 import { AllPokes, Allloader } from './routes/AllPokes';
 import { DetailedView, detailLoader } from './routes/DetailedView';
 
@@ -35,8 +36,12 @@ const router = createBrowserRouter([
         element: <DetailedView />,
         errorElement: <ErrorPage />,
         loader: detailLoader
+      },
+      {
+      path: "Battle",
+      element: <Battle/>,
+      errorElement: <ErrorPage />,
       }
-
     ]
   }
 ]
