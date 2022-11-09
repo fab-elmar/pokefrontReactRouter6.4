@@ -16,8 +16,10 @@ export const AllPokes = () => {
     return (<>
         <div>AllPokes</div>
         <ol>
-            {pokes.map((p) => (
+            {pokes.map((p) => (<>
                 <li key={p.id}> <Link to={`../pokemon/${p.id}`}>{p.name.english} </Link></li>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`} width="100" />
+            </>
             )
             )}
         </ol>
