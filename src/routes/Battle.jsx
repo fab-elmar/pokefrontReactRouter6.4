@@ -1,36 +1,39 @@
 import React from "react"
 import '../css/Battle.css'
+import axios from 'axios';
+import { useLoaderData } from "react-router-dom";
+import RandomPoke from "../components/RandomPoke";
+import { sample } from "lodash";
 
 
+export async function loader() {
+  const pokes = await axios.get("https://pokeback-vbf.herokuapp.com/pokemon").then(response => response.data)
+  return { pokes }
+}
 function Battle() {
-    return (
+  const { pokes } = useLoaderData();
+  const rPoke = sample(pokes);
+
+  return (
     <div className="container"  >
-      
+
       <h1>Battle</h1>
       <div className="choose">
-        <div className="select">
+        <div className="dog">
           <span className="tittle">Choose your Pokemon</span>
           <div className="searchpoke">search poke</div>
-          <div className="randompoke">randompoke</div>
+
           <div className="searchtype">searchtype</div>
         </div>
         <div className="choose">
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-                </div>
-            </div>
-        </div>
+          <RandomPoke rPoke={rPoke} />
+
         </div>
       </div>
-      
-      <button className="startfight place-content-end">Start Fight</button>
+
+      <button className="startfight place-content-center">Start Fight</button>
     </div>
-    )
-  }
-  
-  export default Battle
+  )
+}
+
+export default Battle
