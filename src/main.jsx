@@ -13,6 +13,8 @@ import Root from './routes/Root';
 import Hero from './routes/Hero'
 import { AllPokes, Allloader } from './routes/AllPokes';
 import { DetailedView, detailLoader } from './routes/DetailedView';
+import Fight from './routes/Fight';
+import { fightLoader } from './routes/Fight';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "Pokemons",
+        path: "Pokemon",
         element: <AllPokes />,
         loader: Allloader
       },
@@ -35,8 +37,13 @@ const router = createBrowserRouter([
         element: <DetailedView />,
         errorElement: <ErrorPage />,
         loader: detailLoader
+      },
+       {
+        path: "Pokemon/fight",
+        element: <Fight />,
+        errorElement: <ErrorPage />,
+        loader: fightLoader
       }
-
     ]
   }
 ]
