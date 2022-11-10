@@ -1,7 +1,7 @@
 import React from "react"
 import '../css/Battle.css'
 import axios from 'axios';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import RandomPoke from "../components/RandomPoke";
 import { sample } from "lodash";
 import Searchresult from "../components/Searchresult";
@@ -46,9 +46,9 @@ function Battle() {
         </div>
 
       </div>
-
-      <button className="startfight place-content-center">Start Fight</button>
-
+      <Link to={`../pokemon/fight/${rPoke.id}`}>
+        <button className="startfight place-content-center">Start Fight</button>
+      </Link>
 
     </div>
   )
