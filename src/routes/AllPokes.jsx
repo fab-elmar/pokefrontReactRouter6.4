@@ -13,13 +13,22 @@ export async function Allloader() {
 export const AllPokes = () => {
     const { pokes } = useLoaderData();
     console.log(pokes)
+
+
+    const searchTerm = 'Venusaur'
+    console.log(pokes.filter((poke) => {
+        return poke.name.english.toLowerCase().trim().includes(searchTerm)
+
+    }));
+
+
+
+
     return (<>
         <div>AllPokes</div>
         <ol>
-            {pokes.map((p) => (<>
+            {pokes.map((p) => (
                 <li key={p.id}> <Link to={`../pokemon/${p.id}`}>{p.name.english} </Link></li>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`} width="100" />
-            </>
             )
             )}
         </ol>

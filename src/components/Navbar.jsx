@@ -2,11 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
-    let activeStyle = {
-        textDecoration: "underline",
-    };
 
-    let activeClassName = "underline";
     return (
 
         <div className="navbar bg-base-100">
@@ -22,7 +18,13 @@ export const Navbar = () => {
                 >
                     All Pokes
                 </NavLink>
-                <a >daisyUI</a>
+                <NavLink className="btn btn-ghost normal-case text-xl"
+                    to="battle"
+
+                >
+                    Poke-Box
+                </NavLink>
+
             </div>
             <div className="flex-none">
                 <button className="btn btn-square btn-ghost">
@@ -36,33 +38,3 @@ export const Navbar = () => {
 }
 
 
-
-
-{/* <nav>
-                <ul>
-                    <li>
-                        <NavLink
-                            to="pokemons"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : undefined
-                            }
-                        >
-                            All Pokes
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/"
-                            className={({ isActive }) =>
-                                isActive ? activeClassName : undefined
-                            }
-                        >
-                            HERO
-                        </NavLink>
-                    </li>
-
-                </ul>
-            </nav>
-
-
-         */}
