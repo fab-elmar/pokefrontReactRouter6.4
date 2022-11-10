@@ -3,34 +3,37 @@ import { useLoaderData } from 'react-router-dom'
 import axios from 'axios'
 import '../fight.css'
 
-export async function fightLoader() {
-    const poke = await axios.get(`https://pokeback-vbf.herokuapp.com/pokemon/`).then(response => response.data)
-    console.log(poke)
+export async function fightLoader({ params }) {
+    const poke = await axios.get(`https://pokeback-vbf.herokuapp.com/pokemon/${params.id}`).then(response => response.data)
     return { poke }
 }
 
 export default function Fight() {
   const { poke } = useLoaderData();
-  const imgurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/46.png`
-  const imgurl2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png`
+  const imgurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`
+  const imgurl2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`
   return (
     <>
-        <h1 className=''>Fight!</h1>
-        <div className='fightBox flex place-content-around'>
-          <div className="player1 flex justify-center">
-            <h1>{poke[46].name.english}</h1> 
+        <div className='container flex'>
+        <h1 className='flex justify-center text-2xl mt-8'>Fight!</h1>
+        <div className='flex place-content-around mt-8'>
+          <div className="text-center">
+            <h1>{poke.name.english}</h1> 
             <img className='player1_pic' src={imgurl} width="300" />
           </div>
-          <div className="player2 justify-center">
-            <h1>{poke[13].name.english}</h1>
+          <div className="text-center">
+            <h1>{poke.name.english}</h1>
             <img className='player2_pic' src={imgurl2} width="300" /> 
           </div>
         </div>
-        <div className='flex place-content-around'>
+        <div className='flex place-content-around mt-8'>
           <progress className="progress w-56" value="100" max="100"></progress>
           <progress className="progress w-56" value="100" max="100"></progress>
         </div>
-        <button className='btn flex justify-center'>Attack!</button>
+        <div className='flex justify-center'>
+          <button className='btn mt-8 w-40'>Attack!</button>
+        </div>
+        </div>
     </>
     )
 }
