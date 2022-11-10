@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import '../css/Battle.css'
 import axios from 'axios';
 import { useLoaderData, Link } from "react-router-dom";
@@ -16,40 +16,42 @@ export async function loader({ request }) {
   return { pokes, searchTerm }
 
 }
-function Battle() {
 
+function Battle() {
+  const [fight, setFight] = useState(false)
   const { pokes, searchTerm } = useLoaderData();
   const rPoke = sample(pokes);
   const found = (search(searchTerm, pokes))
   const forceUpdate = useForceUpdate();
   console.log(found)
   return (
-    <div className="container"  >
+    <div className="pika">
+      <div className="container"  >
+        <h1>Battle</h1>
+        <div className="choose">
+          <div className="dog">
+            <span className="tittle">Choose your Pokemon</span>
+            <div className="searchpoke">
+              <Searchbar />
+            </div>
 
-      <h1>Battle</h1>
-      <div className="choose">
-        <div className="dog">
-          <span className="tittle">Choose your Pokemon</span>
-          <div className="searchpoke">
-            <Searchbar />
+            <div className="searchtype">searchtype</div>
+            <button onClick={forceUpdate} className="btn w-32 mix-blend-color-burn fgap-2">
+              Random Poke 🔀
+
+            </button>
+          </div>
+          <div className="choose">
+            {(!searchTerm) ? <RandomPoke rPoke={rPoke} /> : <Searchresult found={found} />}
+
           </div>
 
-          <div className="searchtype">searchtype</div>
-          <button onClick={forceUpdate} className="btn w-32 mix-blend-color-burn fgap-2">
-            Random Poke 🔀
-
-          </button>
         </div>
-        <div className="choose">
-          {(!searchTerm) ? <RandomPoke rPoke={rPoke} /> : <Searchresult found={found} />}
-
-        </div>
+      //  <Link to={`../pokemon/fight/${(found ? found.id : rPoke.id)}`}>
+          <button className="startfight place-content-center">Start Fight</button>
+        </Link>
 
       </div>
-      <Link to={`../pokemon/fight/${rPoke.id}`}>
-        <button className="startfight place-content-center">Start Fight</button>
-      </Link>
-
     </div>
   )
 }
