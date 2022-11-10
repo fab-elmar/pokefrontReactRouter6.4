@@ -11,6 +11,7 @@ import './index.css'
 import ErrorPage from './components/error-page';
 import Root from './routes/Root';
 import Hero from './routes/Hero'
+import Battle, { loader as battloader } from './routes/Battle';
 import { AllPokes, Allloader } from './routes/AllPokes';
 import { DetailedView, detailLoader } from './routes/DetailedView';
 import Fight from './routes/Fight';
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: "Home",
         element: <Hero />
       },
 
@@ -38,11 +39,17 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         loader: detailLoader
       },
-       {
+      {
         path: "Pokemon/fight",
         element: <Fight />,
         errorElement: <ErrorPage />,
         loader: fightLoader
+      },
+      {
+        path: "Battle",
+        element: <Battle />,
+        errorElement: <ErrorPage />,
+        loader: battloader
       }
     ]
   }

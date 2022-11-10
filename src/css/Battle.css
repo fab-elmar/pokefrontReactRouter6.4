@@ -1,0 +1,46 @@
+h1 {
+    justify-items: center;
+    justify-content: center;
+
+}
+
+.container {
+    background-image: url("https://images3.alphacoders.com/273/273289.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15%;
+
+
+}
+
+.choose {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    justify-content: space-around;
+}
+
+.dog {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    width: 40%;
+}
+
+.startfight {
+    display: flex;
+    flex-direction: row;
+    padding-right: 200px;
+    height: 15vh;
+    justify-items: center;
+    flex: end;
+    background: none;
+}
