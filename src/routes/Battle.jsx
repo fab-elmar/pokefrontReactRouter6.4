@@ -17,6 +17,7 @@ export async function loader({ request }) {
 
 }
 function Battle() {
+
   const { pokes, searchTerm } = useLoaderData();
   const rPoke = sample(pokes);
   const found = (search(searchTerm, pokes))
@@ -47,6 +48,8 @@ function Battle() {
       </div>
 
       <button className="startfight place-content-center">Start Fight</button>
+
+
     </div>
   )
 }
