@@ -8,6 +8,7 @@ import Searchresult from "../components/Searchresult";
 import Searchbar from "../components/Searchbar";
 import search from "../components/search";
 import useForceUpdate from "use-force-update";
+import { Navbar } from "../components/Navbar";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
@@ -46,12 +47,11 @@ function Battle() {
           </div>
           <div className="choose">
             {(!searchTerm) ? <RandomPoke rPoke={rPoke} /> : <Searchresult found={found} />}
-
           </div>
-
         </div>
-      //  <Link to={`../pokemon/fight/${(found ? found.id : rPoke.id)}`}>
-          <button className="startfight place-content-center">Start Fight</button>
+
+        <Link to={`../pokemon/fight/${(found ? found.id : rPoke.id)}`}>
+          <button className="btn content-center">Start Fight</button>
         </Link>
 
       </div>
