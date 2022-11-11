@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import axios from 'axios'
 import '../fight.css'
@@ -34,8 +34,25 @@ export default function Fight() {
 
 
   console.log(round)
-  console.log(attacker, defender)
+  console.log('att', attacker)
+  console.log('def', defender)
   console.log(damage(attacker, defender))
+  damage(attacker, defender)
+
+
+
+
+
+  useEffect(() => {
+    console.log(doDamage(defender, poke, attacker, playerHp, compuHp, setCompuHp, setplayerHp))
+
+    return () => {
+      console.log('idontlike pokes', compuHp, playerHp)
+    }
+  }, [round])
+
+
+
 
   return (
     <>
@@ -63,10 +80,10 @@ export default function Fight() {
         </div>
         <div className='flex place-content-around mt-8'>
           <progress className="progress w-56" value={playerHp} max={poke.base.HP}></progress>
-          <progress className="progress w-56" value="100" max="100"></progress>
+          <progress className="progress w-56" value={compuHp} max={compu.base.HP}></progress>
         </div>
         <div className='flex justify-center'>
-          <button onClick={() => { attack(), setround(round => round + 1), doDamage() }} className='btn mt-8 w-40'>Attack!</button>
+          <button onClick={() => { attack(), setround(round => round + 1) }} className='btn mt-8 w-40'>Attack!</button>
         </div>
       </div>
     </>
