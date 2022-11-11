@@ -1,46 +1,4 @@
-/* Psychic
-Base:
-HP: 25
-
-Attack: 20
-
-Defense: 15
-
-Sp.Attack: 105
-
-Sp.Defense: 55
-
-Speed: 90
-// Game Logic Pseudo Code
-//START-> the faster attacks first (if poke a.speed > b.speed)
-
-                    const [ playing, setPlaying ] = useState()
-
-                    useEffect(() => {
-                        setPlaying(start(poke, compu))
-                    }, [])
-
-                    
-
-
-                    function 
-// if a its faster attack else wait attack  (b attack)
-//A tacks
- b(HP  +Defens)  -   Damage
-// 
-                    
-                             function gameOver(poke, compu) {
-                                if (poke.HP <= 0) {
-                                    return compu.name.english wins;
-                                } else if (compu.HP <= 0) {
-                                    return (poke);
-                                } else {
-                                    return false;
-                                }
-                            }
-
-
-//first Attack 
+/*
 
  function calculateDamage(attacker, defender, move) {
      let damage = (((2 * attacker / 5 + 2) * move.power * (attacker.attack / defender.defense)) / 50) + 2;
@@ -54,8 +12,30 @@ Speed: 90
 
 /* let damage = (((2 * ATT20 / 5 + 2) * (spAttack / 2) * (att / defens)) / 50) + 2;
 
-console.log(damage)
  */
+
+const damage = (attacker, defender) => (((2 * attacker.base.Attack / 5 + 2) * (attacker.base.Attack / 2) * (attacker.base.Attack / defender.base.Defense)) / 50);
+
+const attack = (round, nd1, nd2) => {
+    if (round % 2 == 0) {
+        const attacker = nd1;
+        const defender = nd2
+        return { attacker, defender }
+    } else {
+        const attacker = nd2;
+        const defender = nd1;
+        return { attacker, defender }
+    }
+
+}
+const doDamage = (defender, poke, attacker, playerHp, compuHp, setCompuHp, setplayerHp) => {
+    console.log(defender)
+}
+
+//    if (defender.id === poke.id) setplayerHp(playerHp - damage(attacker, defender))
+//    else setCompuHp(compuHp - damage(attacker, defender))
+//}
+/* const doDamage =(defender,poke,compu)=>(defender.name.english===poke.name.english)?set */
 
 function start(poke, compu) {
     if (poke.base.Speed >= compu.base.Speed) {
@@ -70,8 +50,7 @@ function start(poke, compu) {
     }
 }
 
-
-export { start }
+export { start, damage, attack, doDamage }
 
 
 

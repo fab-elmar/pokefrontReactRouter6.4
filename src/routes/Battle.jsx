@@ -36,10 +36,13 @@ function Battle() {
             </div>
 
             <div className="searchtype">searchtype</div>
-            <button onClick={forceUpdate} className="btn w-32 mix-blend-color-burn fgap-2">
-              Random Poke 🔀
-
-            </button>
+            {/* <button onClick={forceUpdate} className="btn w-32 mix-blend-color-burn fgap-2"> */}
+            <div onClick={forceUpdate} className=" w-55 avatar">
+              <div className="w-44 mask mask-hexagon btn">
+                <img src="https://img-9gag-fun.9cache.com/photo/aYYeGWV_700bwp.webp" />
+              </div>
+            </div>
+            {/*   </button> */}
           </div>
           <div className="choose">
             {(!searchTerm) ? <RandomPoke rPoke={rPoke} /> : <Searchresult found={found} />}
